@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>88棉被 品質寢具</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F3EE;
+  --surface: #FFFFFF;
+  --deep: #1C1209;
+  --clay: #A0714F;
+  --clay-light: #C9A882;
+  --sand: #E8DDD0;
+  --muted: #9A8878;
+  --accent: #C0392B;
+  --accent2: #2E7D5E;
+  --accent3: #1A5276;
+  --text: #1C1209;
+  --radius: 14px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Noto Sans TC', sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* 헤더 */
+.header {
+  background: var(--deep);
+  padding: 36px 20px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '88';
+  position: absolute;
+  font-family: 'DM Serif Display', serif;
+  font-size: 180px;
+  color: rgba(255,255,255,0.03);
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.logo-ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1.5px solid var(--clay-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.logo-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.brand {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 5px;
+  margin-bottom: 5px;
+}
+
+.brand-en {
+  font-size: 11px;
+  color: var(--clay-light);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* 탭 네비 */
+.nav {
+  display: flex;
+  overflow-x: auto;
+  gap: 0;
+  background: var(--deep);
+  padding: 0 16px 0;
+  scrollbar-width: none;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav::-webkit-scrollbar { display: none; }
+
+.nav-btn {
+  flex-shrink: 0;
+  padding: 12px 18px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255,255,255,0.45);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.nav-btn.active {
+  color: var(--clay-light);
+  border-bottom-color: var(--clay-light);
+}
+
+.nav-btn:hover:not(.active) {
+  color: rgba(255,255,255,0.7);
+}
+
+/* 메인 */
+.main {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+/* 섹션 */
+.section { display: none; }
+.section.active { display: block; }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--sand);
+}
+
+.section-tag {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+.tag-red { background: #FDEDEC; color: var(--accent); }
+.tag-gold { background: #FEF9E7; color: #B7950B; }
+.tag-green { background: #E9F7EF; color: var(--accent2); }
+.tag-blue { background: #EAF2F8; color: var(--accent3); }
+.tag-gray { background: var(--sand); color: var(--muted); }
+
+.section-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--deep);
+}
+
+/* 그리드 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 상품 카드 */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--sand);
+  cursor: pointer;
+  transition: all 0.22s ease;
+  text-decoration: none;
+  display: block;
+  color: var(--text);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(28,18,9,0.10);
+  border-color: var(--clay-light);
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: var(--sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-img-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-img-placeholder span {
+  font-size: 28px;
+}
+
+.card-img-placeholder p {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.new-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--accent);
+  color: white;
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.best-dot {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #B7950B;
+  color: white;
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.card-body {
+  padding: 10px 12px 12px;
+}
+
+.card-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--deep);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+
+.card-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.card-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--clay);
+  font-weight: 500;
+}
+
+/* 빈 카테고리 */
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--muted);
+}
+
+.empty-icon { font-size: 40px; margin-bottom: 12px; }
+.empty-text { font-size: 14px; margin-bottom: 6px; color: var(--deep); font-weight: 500; }
+.empty-sub { font-size: 12px; }
+
+/* 인스타 버튼 */
+.insta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+  border-radius: var(--radius);
+  padding: 13px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 28px;
+}
+
+/* 푸터 */
+.footer {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* 애니메이션 */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section.active .grid {
+  animation: fadeUp 0.35s ease both;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-ring"><span class="logo-num">88</span></div>
+  <div class="brand">88棉被</div>
+  <div class="brand-en">Quality Bedding Wholesale</div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="showTab('best', this)">⭐ Best</button>
+  <button class="nav-btn" onclick="showTab('sale', this)">🔥 特價</button>
+  <button class="nav-btn" onclick="showTab('exclusive', this)">👑 88獨家</button>
+  <button class="nav-btn" onclick="showTab('allseason', this)">🍃 四季被</button>
+  <button class="nav-btn" onclick="showTab('cool', this)">❄️ 涼感被</button>
+  <button class="nav-btn" onclick="showTab('winter', this)">🧣 冬被</button>
+  <button class="nav-btn" onclick="showTab('pillow', this)">💤 枕頭</button>
+  <button class="nav-btn" onclick="showTab('kids', this)">🐣 小朋友</button>
+</nav>
+
+<div class="main">
+
+  <!-- BEST -->
+  <div class="section active" id="tab-best">
+    <div class="section-head">
+      <span class="section-tag tag-gold">BEST SELLER</span>
+      <span class="section-title">人氣商品</span>
+    </div>
+    <div class="grid">
+
+      <a class="card" href="#" onclick="openChoco(event)">
+        <div class="card-img">
+          <img src="https://88mianbei-png.github.io/88mianbei/choco1.jpg" alt="초코 이불" onerror="this.style.display='none'">
+          <span class="best-dot">BEST 1</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">초코 厚款&薄款</div>
+          <div class="card-sub">두꺼운 것 · 얇은 것</div>
+          <div class="card-link">사진 더 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://88mianbei-png.github.io/88mianbei/ggotbat2.jpg" target="_blank">
+        <div class="card-img">
+          <img src="https://88mianbei-png.github.io/88mianbei/ggotbat2.jpg" alt="꽃밭 이불" onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span>🌸</span><p>사진 로딩 중</p></div>'">
+          <span class="best-dot">BEST 2</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">꽃밭 厚款&薄款</div>
+          <div class="card-sub">두꺼운 것 · 얇은 것</div>
+          <div class="card-link">자세히 보기 →</div>
+        </div>
+      </a>
+      
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🌿</span><p>사진 추가 예정</p></div>
+          <span class="best-dot">BEST 3</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">초원</div>
+          <div class="card-sub">자연 감성 디자인</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>✨</span><p>사진 추가 예정</p></div>
+          <span class="best-dot">BEST 4</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">비아체</div>
+          <div class="card-sub">프리미엄 라인</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🌙</span><p>사진 추가 예정</p></div>
+          <span class="best-dot">BEST 5</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">별달 모달</div>
+          <div class="card-sub">모달 소재 · 부드러움</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+    </div>
+
+    <a class="insta-bar" href="https://www.instagram.com/" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram 바로가기
+    </a>
+    <div class="footer">88棉被 · 2026</div>
+  </div>
+
+  <!-- 特價 -->
+  <div class="section" id="tab-sale">
+    <div class="section-head">
+      <span class="section-tag tag-red">SALE</span>
+      <span class="section-title">特價商品</span>
+    </div>
+    <div class="grid">
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🐶</span><p>사진 추가 예정</p></div>
+          <span class="new-dot">SALE</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">퍼피 냉감</div>
+          <div class="card-sub">강아지 패턴 · 냉감 소재</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>♟️</span><p>사진 추가 예정</p></div>
+          <span class="new-dot">SALE</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">체스 냉감</div>
+          <div class="card-sub">체크 패턴 · 냉감 소재</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🔑</span><p>사진 추가 예정</p></div>
+          <span class="new-dot">SALE</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">키링</div>
+          <div class="card-sub">유니크 디자인</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🌺</span><p>사진 추가 예정</p></div>
+          <span class="new-dot">SALE</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">조안나</div>
+          <div class="card-sub">플로럴 감성</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+    </div>
+    <div class="footer">88棉被 · 2026</div>
+  </div>
+
+  <!-- 88獨家 -->
+  <div class="section" id="tab-exclusive">
+    <div class="section-head">
+      <span class="section-tag tag-gold">88 EXCLUSIVE</span>
+      <span class="section-title">88獨家商品</span>
+    </div>
+    <div class="grid">
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🐼</span><p>사진 추가 예정</p></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">판다 경추</div>
+          <div class="card-sub">경추베개 · 판다 디자인</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🐻</span><p>사진 추가 예정</p></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">리본곰 경추</div>
+          <div class="card-sub">경추베개 · 곰돌이 리본</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🌙</span><p>사진 추가 예정</p></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">몽이 경추</div>
+          <div class="card-sub">경추베개 · 몽이 캐릭터</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>⭐</span><p>사진 추가 예정</p></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">별달 모달 차콜</div>
+          <div class="card-sub">모달 소재 · 차콜 컬러</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>❄️</span><p>사진 추가 예정</p></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">별달 냉감 차콜</div>
+          <div class="card-sub">냉감 소재 · 차콜 컬러</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🐲</span><p>사진 추가 예정</p></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">용용이 厚款&薄款</div>
+          <div class="card-sub">두꺼운 것 · 얇은 것</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+
+    </div>
+    <div class="footer">88棉被 · 2026</div>
+  </div>
+
+  <!-- 四季被 -->
+  <div class="section" id="tab-allseason">
+    <div class="section-head">
+      <span class="section-tag tag-green">ALL SEASON</span>
+      <span class="section-title">四季被</span>
+    </div>
+    <div class="empty-state">
+      <div class="empty-icon">🍃</div>
+      <div class="empty-text">상품 준비 중이에요</div>
+      <div class="empty-sub">곧 업데이트될 예정이에요!</div>
+    </div>
+    <div class="footer">88棉被 · 2026</div>
+  </div>
+
+  <!-- 涼感被 -->
+  <div class="section" id="tab-cool">
+    <div class="section-head">
+      <span class="section-tag tag-blue">COOL</span>
+      <span class="section-title">涼感被</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="https://www.instagram.com/p/DX6NRzfERH0/?igsh=MTY5OWp6d2xqcTZ6bw==" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🟦</span><p>사진 추가 예정</p></div>
+          <span class="new-dot">NEW</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">체크 냉감</div>
+          <div class="card-sub">한국제 · 格紋涼感</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+      <a class="card" href="https://www.instagram.com/p/DXk4QtRk1k3/?igsh=MWtvNGhtYTN1MXFnOA==" target="_blank">
+        <div class="card-img">
+          <div class="card-img-placeholder"><span>🌿</span><p>사진 추가 예정</p></div>
+          <span class="new-dot">NEW</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">아이비 냉감</div>
+          <div class="card-sub">한국제 · 常春藤涼感</div>
+          <div class="card-link">인스타 보기 →</div>
+        </div>
+      </a>
+    </div>
+    <div class="footer">88棉被 · 2026</div>
+  </div>
+
+  <!-- 冬被 -->
+  <div class="section" id="tab-winter">
+    <div class="section-head">
+      <span class="section-tag tag-gray">WINTER</span>
+      <span class="section-title">冬被</span>
+    </div>
+    <div class="empty-state">
+      <div class="empty-icon">🧣</div>
+      <div class="empty-text">상품 준비 중이에요</div>
+      <div class="empty-sub">곧 업데이트될 예정이에요!</div>
+    </div>
+    <div class="footer">88棉被 · 2026</div>
+  </div>
+
+  <!-- 枕頭 -->
+  <div class="section" id="tab-pillow">
+    <div class="section-head">
+      <span class="section-tag tag-gray">PILLOW</span>
+      <span class="section-title">枕頭</span>
+    </div>
+    <div class="empty-state">
+      <div class="empty-icon">💤</div>
+      <div class="empty-text">상품 준비 중이에요</div>
+      <div class="empty-sub">곧 업데이트될 예정이에요!</div>
+    </div>
+    <div class="footer">88棉被 · 2026</div>
+  </div>
+
+  <!-- 小朋友 -->
+  <div class="section" id="tab-kids">
+    <div class="section-head">
+      <span class="section-tag tag-green">KIDS</span>
+      <span class="section-title">小朋友</span>
+    </div>
+    <div class="empty-state">
+      <div class="empty-icon">🐣</div>
+      <div class="empty-text">상품 준비 중이에요</div>
+      <div class="empty-sub">곧 업데이트될 예정이에요!</div>
+    </div>
+    <div class="footer">88棉被 · 2026</div>
+  </div>
+
+</div>
+
+<style>
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 1000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox-img {
+  max-width: 92vw;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.lightbox-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 18px;
+}
+.lb-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  font-size: 22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.lb-count {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  min-width: 50px;
+  text-align: center;
+}
+.lb-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+.lb-title {
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+.lb-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 14px;
+}
+.lb-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+}
+.lb-dot.active { background: white; }
+</style>
+
+<!-- 슬라이드 팝업 -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <div class="lb-title" id="lb-title">초코 厚款&薄款</div>
+  <img class="lightbox-img" id="lb-img" src="" alt="">
+  <div class="lightbox-nav">
+    <button class="lb-btn" onclick="lbPrev()">‹</button>
+    <span class="lb-count" id="lb-count">1 / 8</span>
+    <button class="lb-btn" onclick="lbNext()">›</button>
+  </div>
+  <div class="lb-dots" id="lb-dots"></div>
+</div>
+
+<script>
+function showTab(name, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+}
+
+const base = 'https://88mianbei-png.github.io/88mianbei/';
+const products = {
+  choco: {
+    title: '초코 厚款&薄款',
+    imgs: [1,2,3,4,5,6,7,8].map(i => base + 'choco' + i + '.jpg')
+  }
+};
+
+let curImgs = [];
+let curIdx = 0;
+
+function openChoco(e) {
+  e.preventDefault();
+  openLightbox('choco', 0);
+}
+
+function openLightbox(key, idx) {
+  const p = products[key];
+  curImgs = p.imgs;
+  curIdx = idx;
+  document.getElementById('lb-title').textContent = p.title;
+  updateLb();
+  const dots = document.getElementById('lb-dots');
+  dots.innerHTML = curImgs.map((_, i) =>
+    `<div class="lb-dot ${i===0?'active':''}" onclick="lbGo(${i})"></div>`
+  ).join('');
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLb() {
+  document.getElementById('lb-img').src = curImgs[curIdx];
+  document.getElementById('lb-count').textContent = (curIdx+1) + ' / ' + curImgs.length;
+  document.querySelectorAll('.lb-dot').forEach((d,i) => d.classList.toggle('active', i===curIdx));
+}
+
+function lbNext() { curIdx = (curIdx+1) % curImgs.length; updateLb(); }
+function lbPrev() { curIdx = (curIdx-1+curImgs.length) % curImgs.length; updateLb(); }
+function lbGo(i) { curIdx = i; updateLb(); }
+function closeLb() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeLightbox(e) { if(e.target === document.getElementById('lightbox')) closeLb(); }
+</script>
+</body>
+</html>
